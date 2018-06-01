@@ -9,4 +9,5 @@
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
+    <p>hello there</p>
 </nav>
