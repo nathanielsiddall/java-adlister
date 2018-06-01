@@ -15,38 +15,37 @@
     <title>Title</title>
 </head>
 <body>
-<form action="login.jsp" method="post">
+<form action="/login.jsp" method="GET">
     <label for="userName">Username
-        <input name="userName" id="userName" type="text">
+        <input name="userName" id="userName"  type="text">
     </label>
     <label for="password"> Password
         <input name="password" id="password" type="text">
     </label>
     <label for="submit">Submit
-        <input name="submit" id="submit" type="submit">
+        <button id="submit" name="submit">submit</button>
     </label>
 </form>
 </body>
 </html>
 
+<%
+String userName = request.getParameter("userName");
+String password = request.getParameter("password");
 
-    <%
-     String userName = request.getParameter("userName");
-     String password = request.getParameter("password");
-     String submit = request.getParameter("submit");
 
-    %>
-<c:choose>
-    <C:when test="${submit.equals(\"submit\")}">
-    <c:choose>
-        <c:when test="${username.equals(\"admin\") && password.equals(\"password\")}">
-            <c:redirect url="/profile.jsp"></c:redirect>
-        </c:when>
-        <c:otherwise>
-            <c:redirect url="/login.jsp"></c:redirect>
+if (userName != null){
 
-            <h1>You failed at logging in</h1>
-        </c:otherwise>
-    </c:choose>
-    </c:when>
-</c:choose>
+    if ("admin".equals(userName)&& "password".equals(password)){
+        String url = "/profile.jsp";
+        response.sendRedirect(url);
+    }
+    else if (!"admin".equals(userName)|| !"password".equals(password)){
+        String url = "/login.jsp";
+        response.sendRedirect(url);
+    }
+}
+%>
+
+
+
