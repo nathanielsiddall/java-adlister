@@ -10,9 +10,15 @@
 <html>
 <head>
     <title>Title</title>
+    <%@ include file="partials/head.jsp" %>
+
 </head>
+<%@ include file="partials/navbar.jsp" %>
+
 <body>
 <h1>IT WORKED YAY</h1>
+
+<%@ include file="partials/footer.jsp" %>
 
 </body>
 </html>

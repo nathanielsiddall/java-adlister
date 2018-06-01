@@ -9,12 +9,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
 <html>
 <head>
     <title>Title</title>
+    <%@ include file="partials/head.jsp" %>
+
 </head>
 <body>
+<%@ include file="partials/navbar.jsp" %>
+
 <form action="/login.jsp" method="GET">
     <label for="userName">Username
         <input name="userName" id="userName"  type="text">
@@ -26,6 +29,9 @@
         <button id="submit" name="submit">submit</button>
     </label>
 </form>
+
+<%@ include file="partials/footer.jsp" %>
+
 </body>
 </html>
 
