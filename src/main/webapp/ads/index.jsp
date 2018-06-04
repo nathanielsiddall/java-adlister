@@ -14,14 +14,14 @@
 
 <div class="container">
     <c:forEach items="${ads}" var="item">
-        <a href="ads/">
+    <a href="ads/">
         <div class="card" >
-        <div class="card-body">
-            <h5 class="card-title">${item.title}</h5>
-            <p class="card-text">${item.description}</p>
+            <div class="card-body">
+                <h5 class="card-title">${item.title}</h5>
+                <p class="card-text">${item.description}</p>
+            </div>
         </div>
-        </div>
-        </a>
+    </a>
     </c:forEach>
 </div>
 
