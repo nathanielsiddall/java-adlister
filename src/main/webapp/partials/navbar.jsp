@@ -7,10 +7,10 @@
             <ul class="nav navbar-nav navbar-left">
 
 
-                <c:if test="${loggedin != true && location == \"ads\"}">
+                <c:if test="${loggedin == true && location == \"ads\"}">
                     <li><a href="/profile">Profile</a></li>
                 </c:if>
-                <c:if test="${location = "profile"}">
+                <c:if test="${location == \"profile\" || location == \"login\"}">
                     <li><a href="/ads">See Ads</a></li>
                 </c:if>
 
@@ -18,14 +18,14 @@
 
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <c:choose>
-                <c:when test="${loggedin != true}">
+
+                <c:if test="${loggedin == true}">
                 <li><a href="/logout">logout</a></li>
-                </c:when>
-                <c:otherwise>
+                </c:if>
+                <c:if test="${loggedin == false}">
                 <li><a href="/login">Login</a></li>
-                </c:otherwise>
-            </c:choose>
+                </c:if>
+
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

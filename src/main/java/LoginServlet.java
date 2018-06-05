@@ -12,18 +12,18 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String location = "login";
-
         request.setAttribute("location", location);
 
+        boolean loggedin = false;
+        request.setAttribute("loggedin", loggedin);
 
         HttpSession session = request.getSession();
         String uname = (String) session.getAttribute("user");
-        boolean loggedin = true;
 
-            request.setAttribute("loggedin", loggedin);
 
         if (uname != null){
             response.sendRedirect("/profile");
+
         } else {
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }

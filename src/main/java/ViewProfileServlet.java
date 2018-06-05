@@ -10,8 +10,10 @@ import java.io.IOException;
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String location = "profile";
+        boolean loggedin = true;
+        request.setAttribute("loggedin", loggedin);
 
+        String location = "profile";
         request.setAttribute("location", location);
 
         HttpSession session = request.getSession();
@@ -21,7 +23,6 @@ public class ViewProfileServlet extends HttpServlet {
         if (uname != null) {
             request.setAttribute("welcome", welcome);
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-
 
         }else {
             response.sendRedirect("/login");
