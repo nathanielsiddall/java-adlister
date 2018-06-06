@@ -6,14 +6,8 @@ import java.util.List;
 
 public  class MySQLAdsDao implements Ads{
 
-    public MySQLAdsDao(Connection connection) {
-        this.connection = connection;
-    }
-
-    private Connection connection;
-
     @Override
-    public List<Ad> all() throws SQLException {
+    public  List<Ad> all() throws SQLException {
         DriverManager.registerDriver(new Driver());
 
         Config config = new Config();
@@ -23,11 +17,11 @@ public  class MySQLAdsDao implements Ads{
         String url = config.getUrl();
 
         Connection connection = DriverManager.getConnection(
-            "url", "username", "password"
+            url, username, password
         );
 
         Statement statement = connection.createStatement();
-        String sql = "Select * from ads";
+        String sql = "Select * fROM ads";
         ResultSet resultSet = statement.executeQuery(sql);
 
 
@@ -35,7 +29,6 @@ public  class MySQLAdsDao implements Ads{
         while (resultSet.next()){
             ads.add(new Ad(
                     resultSet.getInt("id"),
-                    resultSet.getInt("user_id"),
                     resultSet.getString("title"),
                     resultSet.getString("description")
             ));
