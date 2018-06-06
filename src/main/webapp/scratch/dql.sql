@@ -1,0 +1,30 @@
+DROP TABLE users;
+DROP TABLE ads;
+
+USE adlister_db;
+
+CREATE  TABLE IF NOT EXISTS users(
+
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  username VARCHAR(20) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(20) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE  TABLE IF NOT EXISTS ads(
+
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT UNSIGNED NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  description VARCHAR(500) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+ALTER TABLE ads ADD FOREIGN KEY(user_id) REFERENCES ads(id);
+
+DROP USER 'bubba'@'localhost';
+CREATE USER 'bubba'@'localhost' IDENTIFIED BY 'bubbasSuperSecurePassword';
+
+FLUSH PRIVILEGES;
+
